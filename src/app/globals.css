@@ -1,0 +1,63 @@
+@import "tailwindcss";
+
+:root {
+  --paper: #f6f2ea;
+  --card: #fffdf8;
+  --ink: #1f1d1a;
+  --muted: #6b655b;
+  --line: #e3dccd;
+  --accent: #2f5d4a;
+  --accent-soft: #dde9e1;
+  --warn: #9a3b1f;
+  --warn-soft: #f6e1d6;
+  --amber: #8a6410;
+  --amber-soft: #f4e8c8;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --paper: #161513;
+    --card: #1f1d1a;
+    --ink: #eee9df;
+    --muted: #a39c8f;
+    --line: #34312b;
+    --accent: #8cc3a6;
+    --accent-soft: #22342b;
+    --warn: #f0a384;
+    --warn-soft: #3a2219;
+    --amber: #e3c26f;
+    --amber-soft: #352b14;
+  }
+}
+
+@theme inline {
+  --color-paper: var(--paper);
+  --color-card: var(--card);
+  --color-ink: var(--ink);
+  --color-muted: var(--muted);
+  --color-line: var(--line);
+  --color-accent: var(--accent);
+  --color-accent-soft: var(--accent-soft);
+  --color-warn: var(--warn);
+  --color-warn-soft: var(--warn-soft);
+  --color-amber: var(--amber);
+  --color-amber-soft: var(--amber-soft);
+  --font-sans: var(--font-body);
+  --font-display: var(--font-display);
+}
+
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-body), system-ui, sans-serif;
+}
+
+input,
+select,
+textarea {
+  color: var(--ink);
+}
+
+::selection {
+  background: var(--accent-soft);
+}
