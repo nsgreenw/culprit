@@ -1,16 +1,30 @@
 "use client";
 
 import Link from "next/link";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Button, Card, Loading, PageTitle } from "@/components/ui";
 import { demoData } from "@/lib/demo";
+import { persistState, requestPersistence, type PersistState } from "@/lib/persist";
+import { REPO_URL } from "@/lib/site";
 import { actions, useAppData, type AppData } from "@/lib/store";
+
+const PERSIST_TEXT: Record<PersistState, string> = {
+  persisted: "Protected. The browser will not delete your data to free space.",
+  "best-effort":
+    "Not protected. The browser can delete your data when the device is low on space. Make regular backups.",
+  unsupported: "This browser cannot protect stored data. Make regular backups.",
+};
 
 export default function SettingsPage() {
   const data = useAppData();
   const fileRef = useRef<HTMLInputElement>(null);
   const [message, setMessage] = useState<string | null>(null);
   const [confirmClear, setConfirmClear] = useState(false);
+  const [persist, setPersist] = useState<PersistState | null>(null);
+
+  useEffect(() => {
+    persistState().then(setPersist, () => setPersist("unsupported"));
+  }, []);
 
   if (!data) return <Loading />;
 
@@ -24,6 +38,7 @@ export default function SettingsPage() {
     a.download = `elimination-tracker-${new Date().toISOString().slice(0, 10)}.json`;
     a.click();
     URL.revokeObjectURL(url);
+    actions.markBackedUp();
   };
 
   const importData = async (file: File) => {
@@ -42,7 +57,7 @@ export default function SettingsPage() {
     <>
       <PageTitle
         title="Your data"
-        lead="Your log stays in this browser only. Make a backup file from time to time, or you can lose it when you clear your browser."
+        lead="Your log stays on this device, in this browser. It never goes to a server. Make a backup file from time to time."
       />
       <div className="space-y-3">
         <Card className="flex flex-wrap items-center justify-between gap-3">
@@ -61,6 +76,11 @@ export default function SettingsPage() {
             <p className="text-sm text-muted">
               {data.meals.length} meals · {data.symptoms.length} symptoms ·{" "}
               {data.experiments.length} experiments
+            </p>
+            <p className="text-xs text-muted">
+              {data.lastBackupAt
+                ? `Last backup: ${new Date(data.lastBackupAt).toLocaleDateString()}`
+                : "No backup yet"}
             </p>
           </div>
           <div className="flex gap-2">
@@ -124,6 +144,40 @@ export default function SettingsPage() {
               Delete all
             </Button>
           )}
+        </Card>
+
+        <Card className="flex flex-wrap items-center justify-between gap-3">
+          <div className="max-w-md">
+            <p className="font-medium">Storage protection</p>
+            <p className="text-sm text-muted">
+              {persist ? PERSIST_TEXT[persist] : "Checking…"}
+            </p>
+          </div>
+          {persist === "best-effort" && (
+            <Button
+              variant="secondary"
+              onClick={() => requestPersistence().then(setPersist)}
+            >
+              Ask again
+            </Button>
+          )}
+        </Card>
+
+        <Card>
+          <p className="font-medium">Privacy & source code</p>
+          <p className="mt-1 text-sm text-muted">
+            This app has no accounts, no analytics, and no server. After the
+            page loads, it makes no network requests. It is open source under
+            the AGPL-3.0 license. The compound data is under CC BY-SA 4.0.
+          </p>
+          <a
+            href={REPO_URL}
+            target="_blank"
+            rel="noreferrer"
+            className="mt-2 inline-block text-sm text-accent underline"
+          >
+            View the source code and report errors
+          </a>
         </Card>
 
         {message && <p className="text-sm text-accent" role="status">{message}</p>}

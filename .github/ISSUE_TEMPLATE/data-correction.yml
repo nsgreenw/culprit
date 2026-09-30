@@ -1,0 +1,30 @@
+name: Data correction
+description: A compound, food level, or symptom link is wrong or missing a source.
+labels: [data]
+body:
+  - type: input
+    id: item
+    attributes:
+      label: Compound or food
+      description: For example "Histamine" or "Spinach".
+    validations:
+      required: true
+  - type: textarea
+    id: problem
+    attributes:
+      label: What is wrong?
+      description: Say what the app shows now and what it should show.
+    validations:
+      required: true
+  - type: textarea
+    id: source
+    attributes:
+      label: Source
+      description: A peer-reviewed paper, clinical guideline, or government health page. Include a DOI or URL.
+    validations:
+      required: true
+  - type: dropdown
+    id: evidence
+    attributes:
+      label: Evidence level you propose
+      options: [strong, moderate, weak, not sure]

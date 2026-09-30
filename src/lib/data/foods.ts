@@ -1,3 +1,9 @@
+/*
+ * SPDX-License-Identifier: CC-BY-SA-4.0
+ * This data file is licensed under CC BY-SA 4.0 (see LICENSE-DATA).
+ * Contribution rules for data: see CONTRIBUTING.md.
+ */
+
 /**
  * Starter food list with compound content.
  * Level: 3 = high, 2 = medium, 1 = low. Absent = none or trivial.

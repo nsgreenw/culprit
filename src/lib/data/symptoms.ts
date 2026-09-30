@@ -1,3 +1,9 @@
+/*
+ * SPDX-License-Identifier: CC-BY-SA-4.0
+ * This data file is licensed under CC BY-SA 4.0 (see LICENSE-DATA).
+ * Contribution rules for data: see CONTRIBUTING.md.
+ */
+
 export type BodySystem =
   | "digestive"
   | "head"

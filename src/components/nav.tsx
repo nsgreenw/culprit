@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { BASE_PATH } from "@/lib/site";
 
 const LINKS = [
   { href: "/", label: "Today", icon: "M4 12h16M12 4v16" },
@@ -22,7 +23,7 @@ export function Nav() {
         <div className="mx-auto flex max-w-3xl items-center justify-between px-4 py-3">
           <Link href="/" className="flex items-center gap-2">
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src="/icon.svg" alt="" className="h-7 w-7" />
+            <img src={`${BASE_PATH}/icon.svg`} alt="" className="h-7 w-7" />
             <span className="font-display text-lg font-semibold tracking-tight">
               Elimination
             </span>

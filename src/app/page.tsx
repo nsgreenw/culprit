@@ -10,7 +10,7 @@ import { findSuspects } from "@/lib/analysis";
 import { COMPOUND_BY_ID, inlineName } from "@/lib/data/compounds";
 import { SYMPTOM_BY_ID } from "@/lib/data/symptoms";
 import { demoData } from "@/lib/demo";
-import { actions, useAppData } from "@/lib/store";
+import { actions, backupDue, useAppData } from "@/lib/store";
 
 export default function TodayPage() {
   const data = useAppData();
@@ -71,6 +71,15 @@ export default function TodayPage() {
             <span className="text-sm opacity-80">How you feel</span>
           </button>
         </div>
+      )}
+
+      {backupDue(data) && (
+        <Link href="/settings" className="block">
+          <div className="rounded-xl border border-amber/30 bg-amber-soft px-4 py-3 text-sm text-amber">
+            <strong>Back up your log.</strong> Your data lives only on this
+            device. Export a backup file so you do not lose it →
+          </div>
+        </Link>
       )}
 
       {activeExperiment && (
