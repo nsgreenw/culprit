@@ -16,7 +16,7 @@ export function generateStaticParams() {
 
 export async function generateMetadata({ params }: PageProps<"/compounds/[id]">) {
   const { id } = await params;
-  return { title: `${COMPOUND_BY_ID[id]?.name ?? "Compound"} · Elimination Tracker` };
+  return { title: `${COMPOUND_BY_ID[id]?.name ?? "Compound"} · Culprit` };
 }
 
 const ORDER: Evidence[] = ["strong", "moderate", "weak"];

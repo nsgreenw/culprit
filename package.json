@@ -1,11 +1,11 @@
 {
-  "name": "elimination-tracker",
+  "name": "culprit",
   "version": "0.1.0",
   "description": "Private, open-source food and symptom tracker that links symptoms to food compounds. Data stays on your device.",
   "license": "AGPL-3.0-or-later",
   "repository": {
     "type": "git",
-    "url": "https://github.com/nsgreenw/elimination-tracker.git"
+    "url": "https://github.com/nsgreenw/culprit.git"
   },
   "private": true,
   "scripts": {

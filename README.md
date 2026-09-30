@@ -1,6 +1,8 @@
-# Elimination Tracker
+# Culprit
 
-A private, open-source food and symptom log. It links your symptoms to the food
+**Find the food behind your symptoms.**
+
+Culprit is a private, open-source food and symptom log. It links your symptoms to the food
 compounds you ate before them, such as gluten, FODMAPs, lactose, histamine,
 oxalates, or lectins. Then it helps you test each suspect with an elimination
 experiment.
@@ -9,7 +11,7 @@ experiment.
 no analytics. The app is a static website. It keeps your log in your browser's
 own database (IndexedDB).
 
-**Use the app:** https://nsgreenw.github.io/elimination-tracker/
+**Use the app:** https://nsgreenw.github.io/culprit/
 (On a phone, use "Add to Home Screen" to install it like an app.)
 
 > **Medical disclaimer.** This app shows patterns in data that you enter. A

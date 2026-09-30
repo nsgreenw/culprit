@@ -5,10 +5,10 @@ export const dynamic = "force-static";
 
 export default function manifest(): MetadataRoute.Manifest {
   return {
-    name: "Elimination Tracker",
-    short_name: "Elimination",
+    name: "Culprit",
+    short_name: "Culprit",
     description:
-      "Log food and symptoms and find the food compounds behind your symptoms.",
+      "Find the food behind your symptoms. Private: your data stays on your device.",
     start_url: `${BASE_PATH}/`,
     scope: `${BASE_PATH}/`,
     display: "standalone",

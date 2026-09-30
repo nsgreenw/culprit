@@ -3,6 +3,7 @@
  * IndexedDB first, localStorage as a fallback when IndexedDB is blocked.
  */
 
+// Storage names keep the pre-rename project name so saved data stays readable.
 const DB_NAME = "elimination-tracker";
 const STORE = "kv";
 const DATA_KEY = "data";

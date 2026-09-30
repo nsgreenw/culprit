@@ -16,10 +16,10 @@ const body = Instrument_Sans({
 });
 
 export const metadata: Metadata = {
-  title: "Elimination Tracker",
+  title: "Culprit · Find the food behind your symptoms",
   description:
     "Log food and symptoms, see which food compounds come before your symptoms, and test suspects with an elimination experiment.",
-  appleWebApp: { capable: true, title: "Elimination", statusBarStyle: "default" },
+  appleWebApp: { capable: true, title: "Culprit", statusBarStyle: "default" },
 };
 
 export const viewport: Viewport = {
